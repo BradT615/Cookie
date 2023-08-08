@@ -24,7 +24,20 @@
 
   <div class="button-container">
     <button><h1>Click for Cookie</h1></button>
-  </div>  
+  </div>
+
+  <script>
+    document.querySelector('button').addEventListener('click', () => {
+      fetch('/.netlify/functions/setCookie')
+        .then(response => response.json())
+        .then(data => {
+          console.log(data.message); // "Cookie set successfully!"
+        })
+        .catch(error => {
+          console.error('An error occurred:', error);
+        });
+    });
+  </script>
   
 </body>
 </html>
